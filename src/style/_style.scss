@@ -70,6 +70,10 @@ main {
   margin-left: auto;
   position: relative;
   height: calc(100vh - rem(82px));
+
+  @include mobile {
+    //
+  }
 }
 
 svg {
@@ -104,21 +108,21 @@ a {
     font-family: $p-font-title;
     font-size: rem(28px);
     font-weight: 400;
-    margin-bottom: rem(10px);
+    margin-bottom: rem(25px);
     color: #1B1F28;
   }
 }
 
 .h2 {
-  font-family: $p-font-regular;
+  font-family: $p-font-bold;
   font-size: rem(32px);
   line-height: 110%;
   text-align: center;
 
   @include mobile  {
-    font-family: $p-font-regular;
-    font-size: rem(28px);
-    line-height: rem(34px);
+    font-family: $p-font-medium;
+    font-size: rem(20px);
+    line-height: 110%;
   }
 }
 
@@ -154,12 +158,13 @@ a {
   width: rem(400px);
   transition: all 0.3s ease-in;
   background-color: $p-color-accent;
+  color: #000;
 
 
   @include mobile {
     width: 100%;
-    height: rem(36px);
-    font-size: rem(14px);
+    height: rem(46px);
+    font-size: rem(16px);
     line-height: rem(20px);
   }
 
@@ -207,6 +212,13 @@ a {
   padding-top: rem(20px);
   font-family: $p-font-medium;
   font-size: rem(22px);
+  line-height: 110%;
+
+  @include mobile {
+    padding-left: rem(16px);
+    font-size: rem(16px);
+  }
+
 }
 
 .checkbox-wrap {

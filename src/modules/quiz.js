@@ -4,7 +4,7 @@ export default {
   init() {
     const questions = [ 
       {
-      'q': '1. Какая ваша главная мотивация для похудения?!!!',
+      'q': '1. Какая ваша главная мотивация для похудения?',
       'opt' : {
         '0':'Внешний вид и уверенность в себе',
         '1':'Улучшение здоровья',
@@ -67,12 +67,11 @@ export default {
     const question = document.querySelector('.question__question');
     const questionList = document.querySelector('.question__list');
     const questionImg = document.querySelector('.question__img');
-   
-   
-    let result = {};
+    const progressInfo = document.querySelector('.question__top-info span');
     let step = 0;
+    const progressBar= document.querySelector('.question__top-progress');
+    const progressShow= document.querySelector('.question__top-progress-show');
 
-    // questions[step]['opt'][key]
     function showQ(questionNumber) {
       question.innerHTML = questions[step].q;
       let options = '';
@@ -93,12 +92,24 @@ export default {
 
       questionList.innerHTML = options;
     }
+ 
 
+    let progressLine = progressShow.offsetWidth;
 
     btnNext.addEventListener('click', () => {
       step++;
+
+      if ((step -1) %  2 == 0) {
+        // document.querySelector('.question__content').classList.add('_revers');
+      } else {
+        document.querySelector('.question__content').classList.remove('_revers');
+      }
+      const progressBarP = progressBar.offsetWidth;
+      const progressReady = progressBarP/questions.length;
+      progressLine += progressReady;
+      progressShow.style.width = `${progressLine}px`;
+      progressInfo.innerHTML = step/questions.length * 100;
       if (step === questions.length) {
-        console.log('END')
         const end = document.querySelector('.end');
         questionPage.classList.remove('active')
         end.classList.add('active')
@@ -106,9 +117,6 @@ export default {
       
         showQ(step);
       }
-     
-      
-      console.log('END', step, questions.length); 
 
     })
 

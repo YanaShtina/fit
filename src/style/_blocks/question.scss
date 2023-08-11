@@ -1,6 +1,10 @@
 .question {
   position: relative;
-display: none;
+  display: none;
+
+  @include mobile {
+    padding: 0 rem(16px);
+  }
 
   &.active {
     display: block;
@@ -22,16 +26,36 @@ display: none;
       border-radius: rem(30px);
     }
 
+    &-progress-show {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0%;
+      height: 100%;
+      background-color: $p-color-accent;
+      border-radius: rem(30px);
+    }
+
     &-info {
       position: absolute;
       top: rem(20px);
       left: 50%;
       transform: translateX(-50%);
+
+      @include mobile {
+        font-size: rem(16px);
+      }
     }
   }
   &__checkbox {
     display: flex;
     align-items: center;
+    font-size: rem(20px);
+    line-height: 110%;
+
+    @include mobile {
+      font-size: rem(16px);
+    }
   }
 
   &__inner {
@@ -39,14 +63,47 @@ display: none;
     max-width: rem(850px);
     margin-left: auto;
     margin-right: auto;
+
+    @include mobile {
+      padding-top: rem(120px); 
+      width: 100%;
+      max-width: 100%;
+    }
   }
 
   &__content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: rem(100px) rem(20px);
   
+    &._revers {
+      .question__img {
+        order: -1;
+      }
+      .question__list {
+        margin-right: 0;
+        margin-left: rem(50px);
+
+        @include mobile {
+          margin-left: 0;
+        }
+    
+      }
+    }
+
+    @include mobile {
+      padding: rem(30px) 0;
+    }
+  }
+
+  &__list {
+    margin-right: rem(50px);
+
+    @include mobile {
+      margin-right: 0;
+    }
+
   }
 
   &__img  {
@@ -56,8 +113,13 @@ display: none;
 
     img {
       height: 100%;
+      max-width: rem(300px);
       object-fit: contain;
-      object-position: center rem(-50px);
+      object-position: center;
+    }
+
+    @include mobile {
+      display: none;
     }
   }
 
@@ -68,6 +130,11 @@ display: none;
 
 .end {
   display: none;
+
+  @include mobile {
+    padding: 0 rem(16px);
+  }
+
 
   &.active {
     display: block;
@@ -81,13 +148,56 @@ display: none;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+
+    @include mobile {
+      padding-top: rem(150px); 
+      max-width: 100%;
+    }
   }
 
   &__title {
     margin-bottom: rem(32px);
   }
 
+  &__info {
+    @include mobile {
+      text-align: center;
+    }
+  }
+
   &__btn {
     margin-top: rem(32px);
+  }
+
+  &__decor {
+    width: rem(250px);
+    height: rem(150px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: rem(30px);
+    overflow: hidden;
+    position: absolute;
+
+    @include mobile {
+      display: none;
+    }
+
+    &._1 {
+      background-image: url('../../img/4.jpg');
+      left: rem(100px);
+      top: rem(200px);
+      transform: rotate(-30deg);
+    }
+
+    &._2{
+      background-image: url('../../img/5.jpg');
+      top: rem(200px);
+      right: rem(100px);
+      transform: rotate(30deg);
+    }
+  }
+  .question__top-progress-show {
+    width: 100%;
   }
 }

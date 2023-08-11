@@ -2,10 +2,19 @@
   &__container {
     display: flex;
     padding-left: rem(145px);
+
+    @include mobile {
+      padding-left: rem(16px);
+      padding-right: rem(16px);
+    }
   }
 
   &__left {
     padding-top: rem(150px);
+
+    @include mobile {
+      padding-top: rem(100px);
+    }
   }
 
   &__info {
@@ -28,7 +37,20 @@
         border-radius: rem(30px);
         transform: rotate(-4deg);
         z-index: -1;
+
+        @include mobile {
+          border-radius: rem(20px);
+          width: calc(100% + rem(5px));
+          height: rem(25px);
+          z-index: -1;
+        }
       }
+    }
+
+    @include mobile {
+      font-size: rem(16px);
+      line-height: 120%;
+      margin-bottom: rem(50px);
     }
   }
 
@@ -39,6 +61,13 @@
     position: absolute;
     max-width: rem(620px);
 
+    @include mobile {
+      max-width: rem(235px);
+      height: rem(278px);
+      z-index: -1;
+      right: rem(-30px);
+    }
+
 
   }
 
@@ -47,5 +76,20 @@
     width: 100%;
     object-position: top left;
     object-fit: contain;
+
+    &._desk {
+      @include mobile {
+        display: none;
+      }
+    }
+
+    &._mob {
+      display: none;
+      @include mobile {
+        display: block;
+
+        z-index: -1;
+      }
+    }
   }
 }
