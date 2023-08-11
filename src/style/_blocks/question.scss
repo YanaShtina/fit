@@ -65,3 +65,29 @@ display: none;
     margin: 0 auto;
   }
 }
+
+.end {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  &__content {
+    padding-top: rem(300px);
+    max-width: rem(600px);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    margin-bottom: rem(32px);
+  }
+
+  &__btn {
+    margin-top: rem(32px);
+  }
+}
