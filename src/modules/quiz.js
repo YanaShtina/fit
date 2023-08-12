@@ -71,8 +71,14 @@ export default {
     let step = 0;
     const progressBar= document.querySelector('.question__top-progress');
     const progressShow= document.querySelector('.question__top-progress-show');
+    const isQuestionPage = document.querySelector('main.question');
 
-    function showQ(questionNumber) {
+    function showQ() {
+      if (isQuestionPage.classList.contains('active')) {
+         document.querySelector('footer').style.display = 'none';
+      } else {
+        document.querySelector('footer').style.display = 'block';
+      }
       question.innerHTML = questions[step].q;
       let options = '';
       questionImg .innerHTML= ` <img src="${questions[step]['img']}" alt="${questions[step]['img']}">`
@@ -89,7 +95,6 @@ export default {
           </div>
         </div>`
       }
-
       questionList.innerHTML = options;
     }
  
@@ -98,12 +103,6 @@ export default {
 
     btnNext.addEventListener('click', () => {
       step++;
-
-      if ((step -1) %  2 == 0) {
-        // document.querySelector('.question__content').classList.add('_revers');
-      } else {
-        document.querySelector('.question__content').classList.remove('_revers');
-      }
       const progressBarP = progressBar.offsetWidth;
       const progressReady = progressBarP/questions.length;
       progressLine += progressReady;
@@ -111,13 +110,12 @@ export default {
       progressInfo.innerHTML = step/questions.length * 100;
       if (step === questions.length) {
         const end = document.querySelector('.end');
-        questionPage.classList.remove('active')
-        end.classList.add('active')
+        questionPage.classList.remove('active');
+        end.classList.add('active');
+        document.querySelector('footer').style.display = 'block';
       } else {
-      
         showQ(step);
       }
-
     })
 
 
@@ -139,8 +137,6 @@ export default {
         duration: 0,
         delay:0,
       })
-    })
-
-    
+    }) 
   }
 }
